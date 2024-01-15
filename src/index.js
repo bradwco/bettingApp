@@ -73,7 +73,7 @@ if(logoutButton){
     logoutButton.addEventListener('click', () => {
         signOut(auth)
         .then(() => {
-            console.log('the user signed out')
+            alert('you signed out')
             window.location.href = 'login.html';
         })
         .catch((err) => {
@@ -212,7 +212,7 @@ if (newLogs) {
 }
 // recents
 let recentArray = [];
-
+//ignore this comment its for a test
 // format data and time
 function formatDateTime(timestamp) {
     const date = new Date(timestamp * 1000); 
