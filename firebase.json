@@ -3,7 +3,8 @@
     "public": "dist",
     "rewrites": [
       {
-        "source": "**"
+        "source": "**",
+        "destination": "/dist/index.html"
       }],
     "ignore": [
       "firebase.json",
