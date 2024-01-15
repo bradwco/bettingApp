@@ -3,8 +3,7 @@
     "public": "dist",
     "rewrites": [
       {
-        "source": "**",
-        "destination": "/dist/signup.html"
+        "source": "**"
       }],
     "ignore": [
       "firebase.json",
