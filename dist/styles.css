@@ -1,9 +1,15 @@
-html, body {
-    height: 100%;
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa; /* Background color for the entire page */
 }
 
 .content {
     min-height: 95vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .bottom-bar {
@@ -15,41 +21,61 @@ html, body {
     justify-content: space-evenly;
     align-items: center;
     height: 5vh; /* 5% of the total height */
-    background-color: #8e918f;
+    background-color: #343a40; /* Dark background for the bottom bar */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
 .bottom-bar button {
-    padding: 0.9em 15em; /*first param is height and second parameter is width (em bases it off parent)*/
-    color: white;
-    background-color: #007bff; 
+    padding: 0.8em 1.5em;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    
+    font-size: 14px;
+    color: #fff;
+    background-color: #007bff; 
+    transition: background-color 0.3s ease-in-out;
 }
+
 .bottom-bar button:hover {
-    background-color: #190ae0;
+    background-color: #0056b3; /* Darker shade on hover */
 }
 
+.header {
+    text-align: center;
+    padding: 1em 0;
+    background-color: #343a40; /* Dark background for header */
+    color: #fff;
+}
 
-/* leaderboard styles */
-#leaderboardContainer {
+#leaderboardContainer,
+#recentContent {
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
 
 .leaderboard-item {
-    width: 100vw;
-    padding: 10px;
-    margin-bottom: 5px;
+    width: 80%;
+    max-width: 400px;
+    padding: 15px;
+    margin-bottom: 10px;
     text-align: center;
-    font-size: 16px;
+    font-size: 18px;
+    background-color: #fff;
+    border: 2px solid #007bff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease-in-out;
 }
 
-.gold { background-color: gold; }
-.silver { background-color: silver; }
+.leaderboard-item:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Slightly elevate on hover */
+}
+
+.gold { background-color: #FFD700; }
+.silver { background-color: #C0C0C0; }
 .bronze { background-color: #CD7F32; }
-.other { background-color: #90EE90; } 
+.other { background-color: #D3D3D3; }
 
 .recent-block {
     border: 2px solid #3498db;
@@ -58,20 +84,30 @@ html, body {
     margin: 20px auto;
     width: 80%;
     max-width: 400px;
+    background-color: #fff;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease-in-out;
 }
 
-/* center recent blocks */
-.content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 80vh;
+.recent-block:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Slightly elevate on hover */
 }
 
 h1 {
     text-align: center;
+    color: #343a40; /* Dark text color */
 }
 
+/* Specific styles for each tab */
+#leaderboardContainer {
+    background-color: #f4f4f4;
+    min-height: calc(100vh - 11vh);
+}
 
+#recentContent {
+    min-height: 80vh;
+}
+.header h1 {
+    margin: 0; /* Remove default margin */
+    color: inherit; /* Inherit text color from parent (.header) */
+}
