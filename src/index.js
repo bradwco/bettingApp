@@ -260,5 +260,18 @@ onSnapshot(recentRef, (snapshot) => {
     console.log(recentArray);
 });
 
+const displayNameElement = document.getElementById('displayName');
+
+onAuthStateChanged(auth, (user) => {
+    if (user) {
+        const displayName = user.displayName;
+
+        if (displayNameElement) {
+            displayNameElement.textContent = `Welcome, ${displayName || 'User'}!`;
+        }
+    }
+});
+
+
 
 });//end of wait for html to load
