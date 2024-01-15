@@ -188,7 +188,7 @@ if (newLogs) {
                                     value: parseInt(temp, 10)
                             })
                         }
-                            else{
+                            else if(gainLossValue=="loss"){
                                 let temp = parseInt(data.value) - parseInt(moneyValue);
                                 updateDoc(docRef, {
                                     value: parseInt(temp, 10)
