@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bets App</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="log.css">
+</head>
+<body>
+    <script src="bundle.js"></script>
+    <script src="../src/my.js"></script>
+
+    <div class="content">
+        
+    </div>
+    <div class="bottom-bar">
+        <button onclick= "redirectToPage('leaderboard.html')">LEADERBOARD</button>
+        <button onclick= "redirectToPage('recents.html')">RECENTS</button>
+        <button onclick= "redirectToPage('log.html')">LOG</button>
+        <button onclick="redirectToPage('profile.html')">PROFILE</button>
+    </div>
+    <form class = "newLog">
+        <label for="money">Money Gain/Loss (EX: 1, -1)</label>
+        <div>
+            <select id="gainLoss" name="gainLoss">
+                <option value="gain">Gain</option>
+                <option value="loss">Loss</option>
+            </select>
+            <input type="text" id="money" name="money" pattern="-?\d+(\.\d{1,2})?" title="Enter a valid number" required>
+            <!--
+                ^-? allows an optional minus sign for negative numbers.
+                \d+ matches one or more digits.
+                (\.\d+)? allows an optional decimal point followed by one or more digits.   
+            -->
+        </div>
+
+        <label for="description">Description:</label>
+        <textarea id="description" name="description" rows="4" required></textarea>
+
+        <button>Submit</button>
+    </form>
+</body>
+</html>
