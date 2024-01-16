@@ -291,6 +291,8 @@ let userActivityTimer;
     //detect user activity
     document.addEventListener('mousemove', resetUserActivityTimer);
     document.addEventListener('keydown', resetUserActivityTimer);
+    document.addEventListener('touchmove', resetUserActivityTimer);
+    document.addEventListener('touchstart', resetUserActivityTimer);
 
 
 });//end of wait for html to load
