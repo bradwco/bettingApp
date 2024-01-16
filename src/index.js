@@ -272,6 +272,25 @@ onAuthStateChanged(auth, (user) => {
     }
 });
 
+let userActivityTimer;
+
+    function resetUserActivityTimer() {
+        clearTimeout(userActivityTimer);
+        userActivityTimer = setTimeout(() => {
+            signOut(auth)
+                .then(() => {
+                    alert('You have been signed out due to inactivity.');
+                    window.location.href = 'login.html';
+                })
+                .catch((err) => {
+                    console.log(err.message);
+                });
+        }, 300000); // 5 minutes
+    }
+
+    //detect user activity
+    document.addEventListener('mousemove', resetUserActivityTimer);
+    document.addEventListener('keydown', resetUserActivityTimer);
 
 
 });//end of wait for html to load
