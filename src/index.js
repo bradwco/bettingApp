@@ -100,7 +100,7 @@ if(loginForm){
             })
     })
 }
-// Function to display scores in order
+// Function to display scores in order (leaderboard)
 let leaderboardObject = {};
 let sortedLeaderboard = [];getDocs(colRef)
 .then((snapshot) => {
@@ -135,7 +135,7 @@ function displayLeaderboard(sortedLeaderboard) {
         
             let leaderboardItem = document.createElement('div');
             leaderboardItem.className = `leaderboard-item ${positionClass}`;
-            leaderboardItem.textContent = `${entry[0]} - ${entry[1]}`;
+            leaderboardItem.textContent = `${entry[0]}: ${entry[1]}`;
         
             leaderboardContainer.appendChild(leaderboardItem);
         });
