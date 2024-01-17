@@ -182,16 +182,16 @@ if (newLogs) {
                             console.log(doc1.id)
                             const docRef = doc(db, 'scores', doc1.id);
                             if(gainLossValue=="gain"){
-                                let temp = parseInt(data.value) + parseInt(moneyValue);
+                                let temp = parseFloat(data.value) + parseFloat(moneyValue);
                                 console.log(temp);
                                 updateDoc(docRef, {
-                                    value: parseInt(temp, 10)
+                                    value: parseFloat(temp, 10)
                             })
                         }
                             else if(gainLossValue=="loss"){
-                                let temp = parseInt(data.value) - parseInt(moneyValue);
+                                let temp = parseFloat(data.value) - parseFloat(moneyValue);
                                 updateDoc(docRef, {
-                                    value: parseInt(temp, 10)
+                                    value: parseFloat(temp, 10)
                             })
                             }
                         });
