@@ -306,7 +306,7 @@ document.addEventListener('visibilitychange', () => {
         const currentTime = new Date().getTime();
         const timeDifference = currentTime - visibilityChangeTime;
 
-        if (timeDifference >= 30000) { // 30 seconds
+        if (timeDifference >= 60000) { // 60 seconds
             // if the difference is greater than 30 seconds, it auto signs u out
             signOut(auth)
                 .then(() => {
