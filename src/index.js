@@ -273,10 +273,41 @@ onAuthStateChanged(auth, (user) => {
 });
 
 let userActivityTimer;
+let visibilityChangeTime = null;
 
-    function resetUserActivityTimer() {
-        clearTimeout(userActivityTimer);
-        userActivityTimer = setTimeout(() => {
+// function to reset to check for user activity
+function resetUserActivityTimer() {
+    clearTimeout(userActivityTimer);
+    userActivityTimer = setTimeout(() => {
+        signOut(auth)
+            .then(() => {
+                alert('You have been signed out due to inactivity.');
+                window.location.href = 'login.html';
+            })
+            .catch((err) => {
+                console.log(err.message);
+            });
+    }, 180000); // 3 minutes
+}
+
+// event listeners for user activity
+document.addEventListener('mousemove', resetUserActivityTimer);
+document.addEventListener('keydown', resetUserActivityTimer);
+document.addEventListener('touchmove', resetUserActivityTimer);
+document.addEventListener('touchstart', resetUserActivityTimer);
+
+// detect if u go off the page
+document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'hidden') {
+        // checks how long since u went off page
+        visibilityChangeTime = new Date().getTime();
+    } else {
+        // when page becomes visible calculate the time difference to see if its more than 30 seconds
+        const currentTime = new Date().getTime();
+        const timeDifference = currentTime - visibilityChangeTime;
+
+        if (timeDifference >= 30000) { // 30 seconds
+            // if the difference is greater than 30 seconds, it auto signs u out
             signOut(auth)
                 .then(() => {
                     alert('You have been signed out due to inactivity.');
@@ -285,14 +316,16 @@ let userActivityTimer;
                 .catch((err) => {
                     console.log(err.message);
                 });
-        }, 300000); // 5 minutes
-    }
+        } else {
+            // if the difference is not 30 or greater, reset the countdown timer
+            resetUserActivityTimer();
+        }
 
-    //detect user activity
-    document.addEventListener('mousemove', resetUserActivityTimer);
-    document.addEventListener('keydown', resetUserActivityTimer);
-    document.addEventListener('touchmove', resetUserActivityTimer);
-    document.addEventListener('touchstart', resetUserActivityTimer);
+        
+        visibilityChangeTime = null;
+    }
+});
+
 
 
 });//end of wait for html to load
